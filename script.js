@@ -27,7 +27,6 @@ const createCustomElement = (element, className, innerText) => {
   e.className = className;
   e.innerText = innerText;
   return e;
-  
 };
 
 /**
