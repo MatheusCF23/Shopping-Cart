@@ -78,10 +78,10 @@ const addlist = async () => {
   const div = document.getElementsByClassName('items')[0];
   results.forEach((element) => {
     div.appendChild(createProductItemElement(element));
-  })
-  //for (let i = 0; i < results.length; i += 1) {
-    //div.appendChild(createProductItemElement(results[i]));
-  //}
+  });
+  // for (let i = 0; i < results.length; i += 1) {
+    // div.appendChild(createProductItemElement(results[i]));
+  // }
 };
 
 window.onload = async () => { 
