@@ -76,10 +76,12 @@ const addlist = async () => {
   const computador = await fetchProducts('computador');
   const { results } = computador;
   const div = document.getElementsByClassName('items')[0];
-  console.log(div);
-  for (let i = 0; i < results.length; i += 1) {
-    div.appendChild(createProductItemElement(results[i]));
-  }
+  results.forEach((element) => {
+    div.appendChild(createProductItemElement(element));
+  })
+  //for (let i = 0; i < results.length; i += 1) {
+    //div.appendChild(createProductItemElement(results[i]));
+  //}
 };
 
 window.onload = async () => { 
