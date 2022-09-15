@@ -70,7 +70,7 @@ const getIdFromProductItem = (product) => product.querySelector('span.id').inner
 const cartItemClickListener = (event) => {
   event.target.remove();
   saveCartItems(ol.innerHTML);
-}
+};
 
 const createCartItemElement = ({ id, title, price }) => {
   const li = document.createElement('li');
@@ -107,7 +107,7 @@ const adicionaNoCarrinho = () => {
 const remove = () => {
   ol.innerHTML = '';
   saveCartItems(ol.innerHTML);
-}
+};
 
 window.onload = async () => {
   await addlist();
