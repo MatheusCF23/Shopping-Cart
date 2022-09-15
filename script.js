@@ -67,7 +67,7 @@ const getIdFromProductItem = (product) => product.querySelector('span.id').inner
  * 
  */
 
-function cartItemClickListener(event) {
+const cartItemClickListener = (event) => {
   event.target.remove();
   saveCartItems(ol.innerHTML);
 }
@@ -104,7 +104,7 @@ const adicionaNoCarrinho = () => {
   });
 };
 
-function remove () {
+const remove = () => {
   ol.innerHTML = '';
   saveCartItems(ol.innerHTML);
 }
