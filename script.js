@@ -8,7 +8,7 @@
  * @param {string} imageSource - URL da imagem.
  * @returns {Element} Elemento de imagem do produto.
  */
- const createProductImageElement = (imageSource) => {
+const createProductImageElement = (imageSource) => {
   const img = document.createElement('img');
   img.className = 'item__image';
   img.src = imageSource;
@@ -37,6 +37,9 @@ const createCustomElement = (element, className, innerText) => {
  * @param {string} product.thumbnail - URL da imagem do produto.
  * @returns {Element} Elemento de produto.
  */
+
+
+
 const createProductItemElement = ({ id, title, thumbnail }) => {
   const section = document.createElement('section');
   section.className = 'item';
@@ -63,7 +66,15 @@ const getIdFromProductItem = (product) => product.querySelector('span.id').inner
  * @param {string} product.title - Título do produto.
  * @param {string} product.price - Preço do produto.
  * @returns {Element} Elemento de um item do carrinho.
+ * 
  */
+
+function cartItemClickListener(event) {
+  event.target.remove();
+  saveCartItems(ol.innerHTML);
+}
+
+
 const createCartItemElement = ({ id, title, price }) => {
   const li = document.createElement('li');
   li.className = 'cart__item';
@@ -72,6 +83,7 @@ const createCartItemElement = ({ id, title, price }) => {
   return li;
 };
 
+// resquisito 3
 const addlist = async () => {
   const computador = await fetchProducts('computador');
   const { results } = computador;
@@ -79,11 +91,41 @@ const addlist = async () => {
   results.forEach((element) => {
     div.appendChild(createProductItemElement(element));
   });
-  // for (let i = 0; i < results.length; i += 1) {
-    // div.appendChild(createProductItemElement(results[i]));
-  // }
 };
 
-window.onload = async () => { 
+// requisito 4 e 5.
+const ol = document.getElementsByClassName('cart__items')[0];
+
+const adicionaNoCarrinho = () => {
+  const button = document.querySelectorAll('.item__add');
+  button.forEach((elememt) => {
+    elememt.addEventListener('click', async (elem) => {
+      const ab = elem.path[1];
+      const cd = ab.firstChild.innerText;
+      const ef = await fetchItem(cd);
+      ol.appendChild(createCartItemElement(ef));
+      saveCartItems(ol.innerHTML);
+    })
+  })
+}
+
+function remove () {
+  ol.innerHTML = '';
+  saveCartItems(ol.innerHTML);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+window.onload = async () => {
   await addlist();
+  adicionaNoCarrinho();
 };
