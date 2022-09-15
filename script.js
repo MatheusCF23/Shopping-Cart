@@ -2,7 +2,7 @@
 // experimente passar o mouse sobre o nome das funções e verá que elas possuem descrições! 
 
 // Fique a vontade para modificar o código já escrito e criar suas próprias funções!
-
+const ol = document.getElementsByClassName('cart__items')[0];
 /**
  * Função responsável por criar e retornar o elemento de imagem do produto.
  * @param {string} imageSource - URL da imagem.
@@ -38,8 +38,6 @@ const createCustomElement = (element, className, innerText) => {
  * @returns {Element} Elemento de produto.
  */
 
-
-
 const createProductItemElement = ({ id, title, thumbnail }) => {
   const section = document.createElement('section');
   section.className = 'item';
@@ -74,7 +72,6 @@ function cartItemClickListener(event) {
   saveCartItems(ol.innerHTML);
 }
 
-
 const createCartItemElement = ({ id, title, price }) => {
   const li = document.createElement('li');
   li.className = 'cart__item';
@@ -94,8 +91,6 @@ const addlist = async () => {
 };
 
 // requisito 4 e 5.
-const ol = document.getElementsByClassName('cart__items')[0];
-
 const adicionaNoCarrinho = () => {
   const button = document.querySelectorAll('.item__add');
   button.forEach((elememt) => {
@@ -105,25 +100,14 @@ const adicionaNoCarrinho = () => {
       const ef = await fetchItem(cd);
       ol.appendChild(createCartItemElement(ef));
       saveCartItems(ol.innerHTML);
-    })
-  })
-}
+    });
+  });
+};
 
 function remove () {
   ol.innerHTML = '';
   saveCartItems(ol.innerHTML);
 }
-
-
-
-
-
-
-
-
-
-
-
 
 window.onload = async () => {
   await addlist();
