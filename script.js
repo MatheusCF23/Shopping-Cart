@@ -7,7 +7,7 @@ const btnLimpar = document.getElementsByClassName('empty-cart')[0];
 const total = document.getElementsByClassName('total-price')[0];
 const cart = document.getElementsByClassName('cart-number')[0];
 const sec = document.getElementsByClassName('items')[0];
-const li = document.getElementsByClassName('cart__item');
+const lis = document.getElementsByClassName('cart__item');
 /**
  * Função responsável por criar e retornar o elemento de imagem do produto.
  * @param {string} imageSource - URL da imagem.
@@ -140,7 +140,7 @@ window.onload = async () => {
   adicionaNoCarrinho();
   const salvo = getSavedCartItems('cartItems');
   ol.innerHTML = salvo;
-  const lista =  [...li];
+  const lista = [...lis];
   lista.forEach((ele) => {
     ele.addEventListener('click', cartItemClickListener);
   });
