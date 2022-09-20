@@ -45,7 +45,6 @@ const createCustomElement = (element, className, innerText) => {
 const createProductItemElement = ({ id, title, thumbnail }) => {
   const section = document.createElement('section');
   section.className = 'item';
-
   section.appendChild(createCustomElement('span', 'item_id', id));
   section.appendChild(createCustomElement('span', 'item__title', title));
   section.appendChild(createProductImageElement(thumbnail));
@@ -114,29 +113,30 @@ const remove = () => {
   ol.innerHTML = '';
   saveCartItems(ol.innerHTML);
 };
-
 // requisito 8
 // requisito 9
 // requisito 10
 btnLimpar.addEventListener('click', () => {
   ol.innerHTML = '';
+  window.localStorage.clear() 
 });
 
 //requisito 11
 const criaCarrengando = () => { 
   const div = document.createElement('div');
   div.className = 'loading';
-  div.innerText = 'Carregando...'
+  div.innerText = 'Carregando...';
   section.appendChild(div);
-}
+};
 
 const removeCarregando = () => {
   const div1 = document.getElementsByClassName('loading')[0];
   div1.remove();
-}
-
+};
 
 window.onload = async () => {
   await addlist();
   adicionaNoCarrinho();
+  const salvo = getSavedCartItems('cartItems');
+  ol.innerHTML = salvo;
 };
