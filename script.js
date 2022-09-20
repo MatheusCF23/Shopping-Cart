@@ -6,7 +6,7 @@ const ol = document.getElementsByClassName('cart__items')[0];
 const btnLimpar = document.getElementsByClassName('empty-cart')[0];
 const total = document.getElementsByClassName('total-price')[0];
 const cart = document.getElementsByClassName('cart-number')[0];
-const section = document.getElementsByClassName('items')[0];
+const sec = document.getElementsByClassName('items')[0];
 /**
  * Função responsável por criar e retornar o elemento de imagem do produto.
  * @param {string} imageSource - URL da imagem.
@@ -83,6 +83,19 @@ const createCartItemElement = ({ id, title, price }) => {
   return li;
 };
 
+// requisito 11
+const criaCarrengando = () => { 
+  const div = document.createElement('div');
+  div.className = 'loading';
+  div.innerText = 'Carregando...';
+  sec.appendChild(div);
+};
+
+const removeCarregando = () => {
+  const div1 = document.getElementsByClassName('loading')[0];
+  div1.remove();
+};
+
 // resquisito 3
 const addlist = async () => {
   criaCarrengando();
@@ -118,21 +131,8 @@ const remove = () => {
 // requisito 10
 btnLimpar.addEventListener('click', () => {
   ol.innerHTML = '';
-  window.localStorage.clear() 
+  window.localStorage.clear();
 });
-
-//requisito 11
-const criaCarrengando = () => { 
-  const div = document.createElement('div');
-  div.className = 'loading';
-  div.innerText = 'Carregando...';
-  section.appendChild(div);
-};
-
-const removeCarregando = () => {
-  const div1 = document.getElementsByClassName('loading')[0];
-  div1.remove();
-};
 
 window.onload = async () => {
   await addlist();
