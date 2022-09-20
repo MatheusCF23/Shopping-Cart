@@ -3,6 +3,9 @@
 
 // Fique a vontade para modificar o código já escrito e criar suas próprias funções!
 const ol = document.getElementsByClassName('cart__items')[0];
+const btnLimpar = document.getElementsByClassName('empty-cart')[0];
+const total = document.getElementsByClassName('total-price')[0];
+const cart = document.getElementsByClassName('cart-number')[0];
 /**
  * Função responsável por criar e retornar o elemento de imagem do produto.
  * @param {string} imageSource - URL da imagem.
@@ -108,6 +111,15 @@ const remove = () => {
   ol.innerHTML = '';
   saveCartItems(ol.innerHTML);
 };
+
+// requisito 8
+// requisito 9
+// requisito 10
+btnLimpar.addEventListener('click', () => {
+  ol.innerHTML = '';
+});
+
+
 
 window.onload = async () => {
   await addlist();
