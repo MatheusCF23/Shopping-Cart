@@ -76,7 +76,7 @@ const cartItemClickListener = (event) => {
   saveCartItems(ol.innerHTML);
 };
 
-const createCartItemElement = ({ id, title, price }) => {
+const createCartItemElement = ({ id, title, price, }) => {
   const li = document.createElement('li');
   li.className = 'cart__item';
   li.innerText = `ID: ${id} | TITLE: ${title} | PRICE: $${price}`;
@@ -127,7 +127,6 @@ const remove = () => {
   ol.innerHTML = '';
   saveCartItems(ol.innerHTML);
 };
-// requisito 8
 // requisito 9
 // requisito 10
 btnLimpar.addEventListener('click', () => {
@@ -138,6 +137,7 @@ btnLimpar.addEventListener('click', () => {
 window.onload = async () => {
   await addlist();
   adicionaNoCarrinho();
+  // Desafio 8
   const salvo = getSavedCartItems('cartItems');
   ol.innerHTML = salvo;
   const lista = [...lis];
